@@ -404,55 +404,55 @@ pnpm test  # Builds + Playwright tests + video organization
 
 ## Implementation Checklist
 
-### Phase 1: Preparation (No Code Changes) ✅ COMPLETE
-- [x] Verify repository structure matches analysis
-- [x] Confirm Lithuanian character set requirements
-- [x] Compile Lithuanian word sorted list (300+ words)
-- [x] Test UTF-8 encoding with diacritics
-- [x] Review existing tests for language-specific code
+### Phase 1: Preparation (No Code Changes)
+- [ ] Verify repository structure matches analysis
+- [ ] Confirm Lithuanian character set requirements
+- [ ] Compile Lithuanian word sorted list (300+ words)
+- [ ] Test UTF-8 encoding with diacritics
+- [ ] Review existing tests for language-specific code
 
-### Phase 2: Implementation ✅ COMPLETE
-#### Step 2.1: Create Word List ✅ COMPLETE
-- [x] Create `app/words/lt.json` with sorted 300+ Lithuanian nouns
-- [x] Use simple string format (no articles)
-- [x] Include diacritic characters: Ą, Č, Ę, Ė, Į, Š, Ų, Ū, Ž
-- [x] Validate JSON syntax
+### Phase 2: Implementation
+#### Step 2.1: Create Word List
+- [ ] Create `app/words/lt.json` with sorted 300+ Lithuanian nouns
+- [ ] Use simple string format (no articles)
+- [ ] Include diacritic characters: Ą, Č, Ę, Ė, Į, Š, Ų, Ū, Ž
+- [ ] Validate JSON syntax
 
-#### Step 2.2: Update Word Pools ✅ COMPLETE
-- [x] Add `import lt from './lt.json'` to `app/words/index.ts`
-- [x] Add `lt` to `wordPools` record
-- [x] Verify TypeScript compiles without errors
+#### Step 2.2: Update Word Pools
+- [ ] Add `import lt from './lt.json'` to `app/words/index.ts`
+- [ ] Add `lt` to `wordPools` record
+- [ ] Verify TypeScript compiles without errors
 
-#### Step 2.3: Update Settings UI ✅ COMPLETE
-- [x] Add `<option value="lt">Lietuvių</option>` to Settings dropdown
-- [x] Place in consistent order (alphabetical or by addition date)
-- [x] Test UI renders correctly
+#### Step 2.3: Update Settings UI
+- [ ] Add `<option value="lt">Lietuvių</option>` to Settings dropdown
+- [ ] Place in consistent order (alphabetical or by addition date)
+- [ ] Test UI renders correctly
 
-#### Step 2.4: Verify Build ✅ COMPLETE
-- [x] Run `pnpm build` without errors
-- [x] Check for TypeScript warnings
-- [x] Verify no console errors
+#### Step 2.4: Verify Build
+- [ ] Run `pnpm build` without errors
+- [ ] Check for TypeScript warnings
+- [ ] Verify no console errors
 
-### Phase 3: Testing ✅ COMPLETE
-#### Step 3.1: Manual Testing ✅ COMPLETE
-- [x] Start dev server (`pnpm run dev`)
-- [x] Open Settings and verify "Lietuvių" option appears
-- [x] Select Lithuanian language
-- [x] Play game and verify words display correctly
-- [x] Test all game states (memorize, delay, play, end)
-- [x] Verify settings persist after page reload
+### Phase 3: Testing
+#### Step 3.1: Manual Testing
+- [ ] Start dev server (`pnpm run dev`)
+- [ ] Open Settings and verify "Lietuvių" option appears
+- [ ] Select Lithuanian language
+- [ ] Play game and verify words display correctly
+- [ ] Test all game states (memorize, delay, play, end)
+- [ ] Verify settings persist after page reload
 
-#### Step 3.2: Automated Testing ✅ COMPLETE
-- [x] Run `pnpm test`
-- [x] Verify Playwright tests pass
-- [x] Check video recordings show Lithuanian text correctly
-- [x] Confirm no new test failures introduced
+#### Step 3.2: Automated Testing
+- [ ] Run `pnpm test`
+- [ ] Verify Playwright tests pass
+- [ ] Check video recordings show Lithuanian text correctly
+- [ ] Confirm no new test failures introduced
 
-### Phase 4: Documentation & Finalization ✅ COMPLETE
-- [x] Update README.md with Lithuanian language
-- [x] Test on multiple browsers (Chrome, Firefox, Safari)
-- [x] Verify mobile responsiveness
-- [x] Review all changes for consistency
+### Phase 4: Documentation & Finalization
+- [ ] Update README.md with Lithuanian language
+- [ ] Test on multiple browsers (Chrome, Firefox, Safari)
+- [ ] Verify mobile responsiveness
+- [ ] Review all changes for consistency
 
 ## Common Issues & Solutions
 
