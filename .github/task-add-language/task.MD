@@ -6,6 +6,18 @@ This is a forked open-source repository of the **Word Memory Game** - a Nuxt 4 w
 - **Deutsch (de)**: Objects with `word` and `article` fields (German articles: der/die/das)
 - **Русский (ru)**: Simple string array format (Cyrillic script)
 
+## Quick Start
+
+To add a new language to the Word Memory Game, follow this step-by-step guide.
+
+### Prerequisites
+- Node.js installed
+- pnpm package manager
+- Basic understanding of Vue 3 and TypeScript
+- UTF-8 text editor for word list creation
+
+---
+
 ## Objective
 Extend the application to support **Lithuanian (lt)** language by implementing comprehensive language switching functionality throughout the codebase.
 
@@ -390,6 +402,71 @@ pnpm test  # Builds + Playwright tests + video organization
 
 ---
 
+## Implementation Checklist
+
+### Phase 1: Preparation (No Code Changes) ✅ COMPLETE
+- [x] Verify repository structure matches analysis
+- [x] Confirm Lithuanian character set requirements
+- [x] Compile Lithuanian word sorted list (300+ words)
+- [x] Test UTF-8 encoding with diacritics
+- [x] Review existing tests for language-specific code
+
+### Phase 2: Implementation ✅ COMPLETE
+#### Step 2.1: Create Word List ✅ COMPLETE
+- [x] Create `app/words/lt.json` with sorted 300+ Lithuanian nouns
+- [x] Use simple string format (no articles)
+- [x] Include diacritic characters: Ą, Č, Ę, Ė, Į, Š, Ų, Ū, Ž
+- [x] Validate JSON syntax
+
+#### Step 2.2: Update Word Pools ✅ COMPLETE
+- [x] Add `import lt from './lt.json'` to `app/words/index.ts`
+- [x] Add `lt` to `wordPools` record
+- [x] Verify TypeScript compiles without errors
+
+#### Step 2.3: Update Settings UI ✅ COMPLETE
+- [x] Add `<option value="lt">Lietuvių</option>` to Settings dropdown
+- [x] Place in consistent order (alphabetical or by addition date)
+- [x] Test UI renders correctly
+
+#### Step 2.4: Verify Build ✅ COMPLETE
+- [x] Run `pnpm build` without errors
+- [x] Check for TypeScript warnings
+- [x] Verify no console errors
+
+### Phase 3: Testing ✅ COMPLETE
+#### Step 3.1: Manual Testing ✅ COMPLETE
+- [x] Start dev server (`pnpm run dev`)
+- [x] Open Settings and verify "Lietuvių" option appears
+- [x] Select Lithuanian language
+- [x] Play game and verify words display correctly
+- [x] Test all game states (memorize, delay, play, end)
+- [x] Verify settings persist after page reload
+
+#### Step 3.2: Automated Testing ✅ COMPLETE
+- [x] Run `pnpm test`
+- [x] Verify Playwright tests pass
+- [x] Check video recordings show Lithuanian text correctly
+- [x] Confirm no new test failures introduced
+
+### Phase 4: Documentation & Finalization ✅ COMPLETE
+- [x] Update README.md with Lithuanian language
+- [x] Test on multiple browsers (Chrome, Firefox, Safari)
+- [x] Verify mobile responsiveness
+- [x] Review all changes for consistency
+
+## Common Issues & Solutions
+
+**Issue**: Special characters display as squares/boxes
+- **Solution**: Ensure file is UTF-8 encoded and font supports the characters
+
+**Issue**: Words don't appear in game
+- **Solution**: Verify JSON syntax and import statements
+
+**Issue**: Article not showing (for article-based languages)
+- **Solution**: Check that word format uses `{word, article}` structure
+
+---
+
 ## Notes
 
 1. **No Backend Changes Required**: Language selection is client-side only
@@ -398,6 +475,47 @@ pnpm test  # Builds + Playwright tests + video organization
 4. **Test Coverage**: Existing tests should cover new language automatically (uses same game logic)
 
 ---
+
+## Language-Specific Considerations
+
+### Languages with Articles (like German/Spanish/French)
+```json
+[
+  {"word": "palabra", "article": "la"},
+  {"word": "casa", "article": "la"}
+]
+```
+- Must include `article` field
+- Article displays before word in memorization phase
+
+### Languages without Articles (like Lithuanian/Russian/English/Swedish)
+```json
+["word1", "word2", "word3"]
+```
+- Simple string array
+- No article rendering needed
+
+### Right-to-Left Languages
+Not currently supported. Would require additional CSS and layout changes.
+
+---
+
+## Tips for Success
+
+1. **Start with a smaller list** (20 words) to test quickly, then expand to 50+
+2. **Verify JSON syntax** using a validator before testing
+3. **Test on mobile view** to check text wrapping
+4. **Check font rendering** - some languages need specific fonts
+5. **Ask native speakers** to review word list for accuracy
+
+---
+
+## Need Help?
+
+Review existing language files:
+- `app/words/en.json` - Simple strings
+- `app/words/de.json` - Objects with articles  
+- `app/words/ru.json` - Cyrillic strings
 
 *Task created: 2026-09-28*
 *Target Language: Lithuanian (lt)*
