@@ -38,9 +38,9 @@ word-memory/
 │   ├── tests/                    # Playwright E2E tests
 │   │   └── game.spec.ts         # Game flow tests
 │   ├── words/                    # Language word pools
-│   │   ├── en.json              # English (300+ words)
-│   │   ├── de.json              # German (with articles)
-│   │   ├── ru.json              # Russian (Cyrillic, ~50 words)
+│   │   ├── en.json              # English words
+│   │   ├── de.json              # German words (with articles)
+│   │   ├── ru.json              # Russian words (Cyrillic)
 │   │   └── index.ts             # Word pool exports
 │   ├── app.vue                   # Main application component
 │   └── words.json                # English word list backup
@@ -224,7 +224,7 @@ pnpm test  # Builds + Playwright tests + video organization
 #### Step 1: Create Lithuanian Word List
 - **File**: `app/words/lt.json`
 - **Format**: Simple string sorted array (no articles in Lithuanian)
-- **Word Count Target**: 300-700 common Lithuanian nouns (more is better)
+- **Word Count Target**: 500 common Lithuanian nouns (more is better)
 - **Word Length Target**: 1-10 characters (shorter is better)
 - **Encoding**: UTF-8 with diacritic characters
 
@@ -261,7 +261,7 @@ pnpm test  # Builds + Playwright tests + video organization
 
 | Priority | File Path | Action | Reason |
 |----------|-----------|--------|--------|
-| **1** | `app/words/lt.json` | **CREATE** | Lithuanian word list (300-700 words) |
+| **1** | `app/words/lt.json` | **CREATE** | Lithuanian word list |
 | **2** | `app/words/index.ts` | **MODIFY** | Import and export Lithuanian word pool |
 | **3** | `app/components/Settings.vue` | **MODIFY** | Add "Lietuvių" option to language dropdown |
 | **4** | `README.md` | **MODIFY** | Update supported languages list |
@@ -283,7 +283,7 @@ pnpm test  # Builds + Playwright tests + video organization
 1. **Font Rendering**: Verify selected fonts support Lithuanian diacritics (Ą, Č, Ę, etc.)
    - **Mitigation**: Use system fonts or web fonts with broad Unicode coverage
 2. **Text Length**: Lithuanian words may be longer than English; verify layout fits
-   - **Mitigation**: Choose words up to 10 characters, test with various font sizes in Settings
+   - **Mitigation**: Choose words up to 10 characters (shorter is better), test with various font sizes in Settings
 
 ### Unknowns (Need Verification)
 1. **Article Rendering**: Since Lithuanian has no articles, `.word-article` elements won't render (expected behavior)
@@ -297,13 +297,13 @@ pnpm test  # Builds + Playwright tests + video organization
 ### Phase 1: Preparation (No Code Changes)
 - [ ] Verify repository structure matches analysis
 - [ ] Confirm Lithuanian character set requirements
-- [ ] Compile Lithuanian word sorted list (300-700 words)
+- [ ] Compile Lithuanian sorted list of unique 500 common short nouns
 - [ ] Test UTF-8 encoding with diacritics
 - [ ] Review existing tests for language-specific code
 
 ### Phase 2: Implementation
 #### Step 2.1: Create Word List
-- [ ] Create `app/words/lt.json` with sorted 300+ Lithuanian nouns
+- [ ] Create `app/words/lt.json` with the compiled Lithuanian words
 - [ ] Use simple string format (no articles)
 - [ ] Include diacritic characters: Ą, Č, Ę, Ė, Į, Š, Ų, Ū, Ž
 - [ ] Validate JSON syntax
@@ -349,7 +349,7 @@ pnpm test  # Builds + Playwright tests + video organization
 ## Expected Changes Summary
 
 ### New Files Created
-1. `app/words/lt.json` - Lithuanian word list (~300-700 words)
+1. `app/words/lt.json` - Lithuanian word list
 
 ### Modified Files
 1. `app/words/index.ts`:
@@ -407,13 +407,13 @@ pnpm test  # Builds + Playwright tests + video organization
 ### Phase 1: Preparation (No Code Changes)
 - [ ] Verify repository structure matches analysis
 - [ ] Confirm Lithuanian character set requirements
-- [ ] Compile Lithuanian word sorted list (300+ words)
+- [ ] Compile Lithuanian sorted list of unique 500 common short nouns
 - [ ] Test UTF-8 encoding with diacritics
 - [ ] Review existing tests for language-specific code
 
 ### Phase 2: Implementation
 #### Step 2.1: Create Word List
-- [ ] Create `app/words/lt.json` with sorted 300+ Lithuanian nouns
+- [ ] Create `app/words/lt.json` the compiled Lithuanian words
 - [ ] Use simple string format (no articles)
 - [ ] Include diacritic characters: Ą, Č, Ę, Ė, Į, Š, Ų, Ū, Ž
 - [ ] Validate JSON syntax
@@ -502,7 +502,7 @@ Not currently supported. Would require additional CSS and layout changes.
 
 ## Tips for Success
 
-1. **Start with a smaller list** (20 words) to test quickly, then expand to 50+
+1. **Start with a smaller list** (10 words) to test quickly, then expand to 500
 2. **Verify JSON syntax** using a validator before testing
 3. **Test on mobile view** to check text wrapping
 4. **Check font rendering** - some languages need specific fonts
